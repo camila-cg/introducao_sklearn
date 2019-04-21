@@ -34,4 +34,8 @@ testes = [misterio1, misterio2, misterio3]
 previsoes = model.predict(testes) #resultado do modelo
 testes_classes = [0, 1, 1] #resultado esperado
 
-print (previsoes)
+#Exibindo taxa de acerto
+corretos = (previsoes == testes_classes).sum()
+total = len(testes)
+taxa_de_acerto = corretos/total
+print("Taxa de acerto ", taxa_de_acerto*100)
