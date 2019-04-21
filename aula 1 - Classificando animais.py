@@ -1,6 +1,7 @@
 #Projeto 1: Classificando animais
 
 from sklearn.svm import LinearSVC
+from sklearn.metrics import accuracy_score
 
 # features => atributos (1 sim, 0 não)
 # pelo longo? 
@@ -35,7 +36,5 @@ previsoes = model.predict(testes) #resultado do modelo
 testes_classes = [0, 1, 1] #resultado esperado
 
 #Exibindo taxa de acerto
-corretos = (previsoes == testes_classes).sum()
-total = len(testes)
-taxa_de_acerto = corretos/total
-print("Taxa de acerto ", taxa_de_acerto*100)
+taxa_de_acerto = accuracy_score(testes_classes, previsoes)
+print("Taxa de acerto", taxa_de_acerto * 100)
