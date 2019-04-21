@@ -17,6 +17,7 @@ mapa = {
 }
 dados = dados.rename(columns = mapa)
 
+#Exibe os 5 primeiros registros
 print(dados.head())
 
 #modelo(dados) = classe --> f(x) = y
