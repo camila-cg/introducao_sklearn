@@ -3,6 +3,7 @@
 import pandas as pd
 from sklearn.svm import LinearSVC
 from sklearn.metrics import accuracy_score
+from sklearn.model_selection import train_test_split
 
 #Lendo dados de uma fonte externa
 uri = "https://gist.githubusercontent.com/guilhermesilveira/2d2efa37d66b6c84a722ea627a897ced/raw/10968b997d885cbded1c92938c7a9912ba41c615/tracking.csv"
@@ -28,10 +29,14 @@ y = dados["comprou"]
 print(dados.shape)
 
 #Separando a base
-treino_x = x[:75]
-treino_y = y[:75]
-teste_x = x[75:]
-teste_y = y[75:]
+SEED = 20
+treino_x, teste_x, treino_y, teste_y = train_test_split(x, y, random_state = SEED, test_size =0.25, stratify = y)
+print(treino_x.shape)
+print(teste_x.shape)
+
+#analisando
+print(treino_y.value_counts())
+print(teste_y.value_counts())
 
 print("Treinaremos com %d elementos e testaremos com %d elementos" % (len(treino_x), len(teste_x)))
 
